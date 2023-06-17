@@ -6,94 +6,94 @@ int main() {
     return 0;
 }
 
-void GetChar() 
+void getChar() 
 {
-    Look = getchar();
+    Look = getchar();  // Gets a single character from the user I/O
 }
 
 
-void Error(char *s)
+void error(char *s)
 {
     printf("\nError: %s.", s);
 }
 
-void Abort(char *s)
+void abort(char *s)
 {
-    Error(s);
+    error(s);
     exit(1);
 }
 
 
-void Expected(char *s)
+void expected(char *s)
 {
     sprintf(tmp, "%s Expected", s);
-    Abort(tmp);
+    abort(tmp);
 }
 
 
-void Match(char x)
+void match(char x)
 {
     if(Look == x) {
-        GetChar();
+        getChar();
     } else {
         sprintf(tmp, "' %c ' ",  x);
-        Expected(tmp);
+        expected(tmp);
     }
 }
 
 
-int IsAlpha(char c)
+int isAlpha(char c)
 {
     return (UPCASE(c) >= 'A') && (UPCASE(c) <= 'Z');
 } 
 
-int IsDigit(char c)
+int isDigit(char c)
 {
     return (c >= '0') && (c <= '9');
 }
 
 
-char GetName()
+char getName()
 {
     char c = Look;
 
-    if( !IsAlpha(Look)) {
+    if( !isAlpha(Look)) {
         sprintf(tmp, "Name");
-        Expected(tmp);
+        expected(tmp);
     }
 
-    GetChar();
+    getChar();
 
     return UPCASE(c);
 }
 
 
-char GetNum()
+char getNum()
 {
     char c = Look;
 
-    if( !IsDigit(Look)) {
+    if( !isDigit(Look)) {
         sprintf(tmp, "Integer");
-        Expected(tmp);
+        expected(tmp);
     }
 
-    GetChar();
+    getChar();
 
     return c;
 }
 
-void Emit(char *s)
+void emit(char *s)
 {
     printf("\t%s", s);
 }
 
-void EmitLn(char *s)
+void emitLn(char *s)
 {
-    Emit(s);
+    emit(s);
     printf("\n");
 }
 
-void Init()
+void init()
 {
-    GetChar();
+    getChar();
 }

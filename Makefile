@@ -1,5 +1,5 @@
 CC=g++
-FLAGS=-std=c++17 -Wall
+FLAGS=-std=c++17 -Wall -Werror
 IN=cradle.cpp cradle.h
 OUT=program.exe
 

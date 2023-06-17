@@ -8,22 +8,22 @@ static char tmp[MAX_BUF];
 
 char Look;
 
-void GetChar();
+void getChar();
 
-void Error(char *s);
-void Abort(char *s);
-void Expected(char *s);
-void Match(char x);
+void error(char *s);
+void abort(char *s);
+void expected(char *s);
+void match(char x);
 
-int IsAlpha(char c);
-int IsDigit(char c);
+int isAlpha(char c);
+int isDigit(char c);
 
-char GetName();
-char GetNum();
+char getName();
+char getNum();
 
-void Emit(char *s);
-void EmitLn(char *s);
+void emit(char *s);
+void emitLn(char *s);
 
-void Init();
+void init();
 
 #endif
