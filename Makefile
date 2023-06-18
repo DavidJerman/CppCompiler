@@ -1,6 +1,6 @@
 CC=g++
 FLAGS=-std=c++17 -Wall -Werror
-IN=cradle.cpp cradle.h
+IN=main.cpp cradle.cpp filewriter.cpp
 OUT=program.exe
 
 all: build run clean
