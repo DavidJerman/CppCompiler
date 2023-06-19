@@ -1,31 +1,29 @@
 #ifndef _CRADLE_H
 #define _CRADLE_H
 
-#include "filewriter.h"
-#include <iostream>
-#include <string>
-
-#define UPCASE(C) ((1<<6)| (C))
+#define UPCASE(C) (~(1 << 5) & (C))
 #define MAX_BUF 100
 
 static char tmp[MAX_BUF];
 
-void getChar();
+char Look;
 
-void error(std::string s);
-void abort(std::string s);
-void expected(std::string s);
-void match(char x);
+void GetChar();
 
-int isAlpha(char c);
-int isDigit(char c);
+void Error(char *s);
+void Abort(char *s);
+void Expected(char *s);
+void Match(char x);
 
-char getName();
-char getNum();
+int IsAlpha(char c);
+int IsDigit(char c);
 
-void emit(std::string s);
-void emitLn(std::string s);
+char GetName();
+char GetNum();
 
-void init();
+void Emit(char *s);
+void EmitLn(char *s);
+
+void Init();
 
 #endif

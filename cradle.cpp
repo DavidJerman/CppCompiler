@@ -1,95 +1,94 @@
 #include "cradle.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-char look;
-
-void getChar()
+void GetChar()
 {
-    look = getchar(); // Gets a single character from the user I/O
+    Look = getchar();
 }
 
-void error(std::string s)
+void Error(char *s)
 {
-    printf("\nError: %s.", s.c_str());
+    printf("\nError: %s.", s);
 }
 
-void abort(std::string s)
+void Abort(char *s)
 {
-    error(s);
+    Error(s);
     exit(1);
 }
 
-void expected(std::string s)
+void Expected(char *s)
 {
-    sprintf(tmp, "%s Expected", s.c_str());
-    abort(tmp);
+    sprintf(tmp, "%s Expected", s);
+    Abort(tmp);
 }
 
-void match(char x)
+void Match(char x)
 {
-    if (look == x)
+    if (Look == x)
     {
-        getChar();
+        GetChar();
     }
     else
     {
         sprintf(tmp, "' %c ' ", x);
-        expected(tmp);
+        Expected(tmp);
     }
 }
 
-int isAlpha(char c)
+int IsAlpha(char c)
 {
     return (UPCASE(c) >= 'A') && (UPCASE(c) <= 'Z');
 }
 
-int isDigit(char c)
+int IsDigit(char c)
 {
     return (c >= '0') && (c <= '9');
 }
 
-char getName()
+char GetName()
 {
-    char c = look;
+    char c = Look;
 
-    if (!isAlpha(look))
+    if (!IsAlpha(Look))
     {
         sprintf(tmp, "Name");
-        expected(tmp);
+        Expected(tmp);
     }
 
-    getChar();
+    GetChar();
 
     return UPCASE(c);
 }
 
-char getNum()
+char GetNum()
 {
-    char c = look;
+    char c = Look;
 
-    if (!isDigit(look))
+    if (!IsDigit(Look))
     {
         sprintf(tmp, "Integer");
-        expected(tmp);
+        Expected(tmp);
     }
 
-    getChar();
+    GetChar();
 
     return c;
 }
 
-void emit(std::string s)
+void Emit(char *s)
 {
-    sprintf(tmp, "\t%s", s.c_str());
-    FW::write(tmp);
+    printf("\t%s", s);
 }
 
-void emitLn(std::string s)
+void EmitLn(char *s)
 {
-    emit(s);
-    FW::write("\n");
+    Emit(s);
+    printf("\n");
 }
 
-void init()
+void Init()
 {
-    getChar();
+    GetChar();
 }
